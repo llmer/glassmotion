@@ -12,22 +12,25 @@ export function Hero() {
         system. Built on shadcn/ui and Tailwind CSS.
       </p>
       <div className="flex flex-col sm:flex-row gap-4 justify-center">
+        {/* Primary CTA - always visible */}
         <Link href="/components">
-          <GlassButton size="lg" className="text-base" focusLayer>
-            Components
+          <GlassButton size="lg" className="text-base w-full sm:w-auto" focusLayer>
+            Explore Components
           </GlassButton>
         </Link>
-        <Link href="/dashboard">
+
+        {/* Secondary CTAs - hidden on mobile */}
+        <Link href="/dashboard" className="hidden sm:block">
           <GlassButton size="lg" variant="outline" className="text-base">
             Dashboard
           </GlassButton>
         </Link>
-        <Link href="/forms">
+        <Link href="/forms" className="hidden sm:block">
           <GlassButton size="lg" variant="outline" className="text-base">
             Forms
           </GlassButton>
         </Link>
-        <Link href="/effects">
+        <Link href="/effects" className="hidden sm:block">
           <GlassButton size="lg" variant="outline" className="text-base">
             Effects
           </GlassButton>
