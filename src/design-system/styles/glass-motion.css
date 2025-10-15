@@ -1,0 +1,281 @@
+/**
+ * GlassMotion Utility Classes
+ * Tailwind-compatible glass effect utilities
+ */
+
+/* ============================
+   Base Glass Surface Utilities
+   ============================ */
+
+.glass-surface {
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  background-color: var(--glass-tint);
+  border: 1px solid var(--glass-border);
+  transition: all var(--motion-duration-normal) var(--motion-standard);
+}
+
+.glass-overlay {
+  backdrop-filter: blur(var(--blur-high));
+  -webkit-backdrop-filter: blur(var(--blur-high));
+  background-color: var(--glass-tint);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-medium);
+  transition: all var(--motion-duration-normal) var(--motion-standard);
+}
+
+.glass-card {
+  backdrop-filter: blur(var(--blur-medium));
+  -webkit-backdrop-filter: blur(var(--blur-medium));
+  background-color: var(--glass-tint);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-large);
+  box-shadow: var(--shadow-medium);
+  transition: all var(--motion-duration-normal) var(--motion-standard);
+}
+
+.glass-button {
+  backdrop-filter: blur(var(--blur-medium));
+  -webkit-backdrop-filter: blur(var(--blur-medium));
+  background: color-mix(in srgb, var(--accent) 15%, var(--glass-tint) 85%);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-medium);
+  box-shadow: var(--glass-highlight);
+  transition: all var(--motion-duration-fast) var(--motion-standard);
+}
+
+.glass-button:hover {
+  background: color-mix(in srgb, var(--accent) 25%, var(--glass-tint) 75%);
+  box-shadow: var(--shadow-low);
+  transform: translateY(-1px);
+}
+
+.glass-button:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+.glass-navbar {
+  backdrop-filter: blur(var(--blur-low));
+  -webkit-backdrop-filter: blur(var(--blur-low));
+  background-color: var(--glass-tint);
+  border-bottom: 1px solid var(--glass-border);
+}
+
+/* ============================
+   Elevation Levels
+   ============================ */
+
+.glass-elevation-1 {
+  backdrop-filter: blur(var(--blur-low));
+  -webkit-backdrop-filter: blur(var(--blur-low));
+  box-shadow: var(--shadow-low), inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
+  transition: all var(--motion-duration-normal) var(--motion-standard);
+}
+
+.glass-elevation-2 {
+  backdrop-filter: blur(var(--blur-medium));
+  -webkit-backdrop-filter: blur(var(--blur-medium));
+  box-shadow: var(--shadow-medium), inset 0 1px 0 0 rgba(255, 255, 255, 0.15);
+  transition: all var(--motion-duration-normal) var(--motion-standard);
+}
+
+.glass-elevation-3 {
+  backdrop-filter: blur(var(--blur-high));
+  -webkit-backdrop-filter: blur(var(--blur-high));
+  box-shadow: var(--shadow-high), inset 0 1px 0 0 rgba(255, 255, 255, 0.2);
+  transition: all var(--motion-duration-normal) var(--motion-standard);
+}
+
+/* ============================
+   Highlight & Focus States
+   ============================ */
+
+.glass-highlight {
+  box-shadow: var(--glass-highlight);
+}
+
+.glass-focus {
+  outline: none;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 30%, transparent 70%);
+}
+
+/* ============================
+   Animation Presets
+   ============================ */
+
+.glass-animate-in {
+  animation: glass-fade-in var(--motion-duration-normal) var(--motion-ease-out);
+}
+
+.glass-animate-out {
+  animation: glass-fade-out var(--motion-duration-fast) var(--motion-ease-in);
+}
+
+.glass-scale-in {
+  animation: glass-scale-in var(--motion-duration-slow) var(--motion-ease-out);
+}
+
+@keyframes glass-fade-in {
+  from {
+    opacity: 0;
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
+  }
+  to {
+    opacity: 1;
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+  }
+}
+
+@keyframes glass-fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes glass-scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ============================
+   Hover Effects
+   ============================ */
+
+.glass-hover-lift {
+  transition: transform var(--motion-duration-fast) var(--motion-standard),
+              box-shadow var(--motion-duration-fast) var(--motion-standard),
+              backdrop-filter var(--motion-duration-fast) var(--motion-standard);
+}
+
+.glass-hover-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-high), inset 0 1px 0 0 rgba(255, 255, 255, 0.2);
+}
+
+/* Elevation transitions on hover */
+.glass-elevation-1.glass-hover-lift:hover {
+  backdrop-filter: blur(calc(var(--blur-low) * 1.2));
+  -webkit-backdrop-filter: blur(calc(var(--blur-low) * 1.2));
+  box-shadow: var(--shadow-medium), inset 0 1px 0 0 rgba(255, 255, 255, 0.15);
+}
+
+.glass-elevation-2.glass-hover-lift:hover {
+  backdrop-filter: blur(calc(var(--blur-medium) * 1.2));
+  -webkit-backdrop-filter: blur(calc(var(--blur-medium) * 1.2));
+  box-shadow: var(--shadow-high), inset 0 1px 0 0 rgba(255, 255, 255, 0.2);
+}
+
+.glass-hover-glow {
+  transition: box-shadow var(--motion-duration-fast) var(--motion-standard);
+}
+
+.glass-hover-glow:hover {
+  box-shadow: 0 0 20px color-mix(in srgb, var(--accent) 40%, transparent 60%);
+}
+
+/* ============================
+   Reduced Motion Fallbacks
+   ============================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .glass-surface,
+  .glass-overlay,
+  .glass-card,
+  .glass-button,
+  .glass-navbar,
+  .glass-hover-lift,
+  .glass-hover-glow {
+    transition: none;
+  }
+
+  .glass-animate-in,
+  .glass-animate-out,
+  .glass-scale-in {
+    animation: none;
+  }
+
+  .glass-button:hover,
+  .glass-hover-lift:hover {
+    transform: none;
+  }
+}
+
+/* ============================
+   Browser Support Fallbacks
+   ============================ */
+
+@supports not (backdrop-filter: blur(1px)) {
+  .glass-surface,
+  .glass-overlay,
+  .glass-card,
+  .glass-button,
+  .glass-navbar {
+    background-color: color-mix(in srgb, var(--glass-tint) 90%, transparent 10%);
+  }
+}
+
+/* ============================
+   Dark Mode Adjustments
+   ============================ */
+
+@media (prefers-color-scheme: dark) {
+  .glass-button {
+    background: color-mix(in srgb, var(--accent) 20%, var(--glass-tint) 80%);
+  }
+
+  .glass-button:hover {
+    background: color-mix(in srgb, var(--accent) 35%, var(--glass-tint) 65%);
+  }
+}
+
+/* ============================
+   Utility Variants
+   ============================ */
+
+.glass-blur-none {
+  backdrop-filter: blur(0px);
+  -webkit-backdrop-filter: blur(0px);
+}
+
+.glass-blur-low {
+  backdrop-filter: blur(var(--blur-low));
+  -webkit-backdrop-filter: blur(var(--blur-low));
+}
+
+.glass-blur-medium {
+  backdrop-filter: blur(var(--blur-medium));
+  -webkit-backdrop-filter: blur(var(--blur-medium));
+}
+
+.glass-blur-high {
+  backdrop-filter: blur(var(--blur-high));
+  -webkit-backdrop-filter: blur(var(--blur-high));
+}
+
+.glass-border {
+  border: 1px solid var(--glass-border);
+}
+
+.glass-shadow-low {
+  box-shadow: var(--shadow-low);
+}
+
+.glass-shadow-medium {
+  box-shadow: var(--shadow-medium);
+}
+
+.glass-shadow-high {
+  box-shadow: var(--shadow-high);
+}

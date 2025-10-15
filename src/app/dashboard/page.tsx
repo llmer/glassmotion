@@ -1,11 +1,11 @@
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
-import { Hero } from "@/components/sections/hero";
-import { Features } from "@/components/sections/features";
-import { Showcase } from "@/components/sections/showcase";
-import { QuickStart } from "@/components/sections/quick-start";
+import { StatsGrid } from "@/components/sections/stats-grid";
+import { ActivityFeed } from "@/components/sections/activity-feed";
+import { ChartCard } from "@/components/sections/chart-card";
+import { UsersTable } from "@/components/sections/users-table";
 
-export default function Home() {
+export default function DashboardPage() {
   return (
     <div className="min-h-screen relative overflow-hidden">
       {/* Animated gradient background with patterns */}
@@ -23,11 +23,22 @@ export default function Home() {
 
       <Navbar />
 
-      <main className="container mx-auto px-4 py-16 sm:py-24 relative">
-        <Hero />
-        <Features />
-        <Showcase />
-        <QuickStart />
+      <main className="container mx-auto px-4 py-8 sm:py-12 relative space-y-8">
+        <div>
+          <h1 className="text-4xl font-bold mb-2">Dashboard</h1>
+          <p className="text-muted-foreground">
+            Welcome back! Here&apos;s what&apos;s happening with your workspace.
+          </p>
+        </div>
+
+        <StatsGrid />
+
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <ActivityFeed />
+          <ChartCard />
+        </div>
+
+        <UsersTable />
       </main>
 
       <Footer />
