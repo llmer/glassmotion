@@ -8,6 +8,11 @@
 import * as React from 'react'
 import { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent } from '@/components/ui/card'
 import { cn } from '@/lib/utils'
+import { GlassEffects } from '../../effects/GlassEffects'
+import type { MaskConfig, OverlayConfig, OpticConfig } from '../../effects/GlassEffects'
+import { maskPresets } from '../../effects/masks/patterns'
+import { overlayPresets } from '../../effects/overlays/patterns'
+import { opticPresets } from '../../effects/optics/filters'
 
 export interface GlassCardProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
@@ -39,10 +44,28 @@ export interface GlassCardProps extends React.HTMLAttributes<HTMLDivElement> {
    * @default true
    */
   lighting?: boolean
+
+  /**
+   * Apply mask effect (preset name or custom config)
+   * @default undefined
+   */
+  mask?: keyof typeof maskPresets | MaskConfig | MaskConfig[]
+
+  /**
+   * Apply overlay effect (preset name or custom config)
+   * @default undefined
+   */
+  overlay?: keyof typeof overlayPresets | OverlayConfig | OverlayConfig[]
+
+  /**
+   * Apply optic effect (preset name or custom config)
+   * @default undefined
+   */
+  optic?: keyof typeof opticPresets | OpticConfig
 }
 
 const GlassCard = React.forwardRef<HTMLDivElement, GlassCardProps>(
-  ({ className, elevation = 2, hoverable = true, animateIn = false, adaptiveBlur = false, lighting = true, children, ...props }, ref) => {
+  ({ className, elevation = 2, hoverable = true, animateIn = false, adaptiveBlur = false, lighting = true, mask, overlay, optic, children, ...props }, ref) => {
     const cardRef = React.useRef<HTMLDivElement>(null)
     const [backgroundComplexity, setBackgroundComplexity] = React.useState(0)
 
@@ -86,6 +109,9 @@ const GlassCard = React.forwardRef<HTMLDivElement, GlassCardProps>(
       ? `${30 + (backgroundComplexity * 20)}px`
       : '30px'
 
+    // Determine if we need effects
+    const hasEffects = mask || overlay || optic
+
     return (
       <Card
         ref={(node) => {
@@ -98,14 +124,27 @@ const GlassCard = React.forwardRef<HTMLDivElement, GlassCardProps>(
           }
           cardRef.current = node
         }}
-        className={glassClasses}
+        className={cn(glassClasses, hasEffects && 'relative overflow-hidden')}
         style={{
           ...props.style,
           '--card-blur': blurValue,
         } as React.CSSProperties}
         {...props}
       >
-        {children}
+        {/* Glass effects layer - applied to background */}
+        {hasEffects && (
+          <GlassEffects
+            mask={mask}
+            overlay={overlay}
+            optic={optic}
+            className="absolute inset-0 pointer-events-none -z-0"
+          />
+        )}
+
+        {/* Content layer - rendered on top */}
+        <div className={cn('flex flex-col gap-6 h-full', hasEffects && 'relative z-10')}>
+          {children}
+        </div>
       </Card>
     )
   }

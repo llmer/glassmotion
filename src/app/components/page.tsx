@@ -1,13 +1,17 @@
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
-import { ContactForm } from "@/components/sections/contact-form";
-import { SettingsForm } from "@/components/sections/settings-form";
-import { AnalyticsChart } from "@/components/sections/analytics-chart";
+import { PaymentForm } from "@/components/showcase/payment-form";
+import { LoadingShowcase } from "@/components/showcase/loading-showcase";
+import { TeamInvite } from "@/components/showcase/team-invite";
+import { TwoFactorAuth } from "@/components/showcase/two-factor-auth";
+import { PricingCards } from "@/components/showcase/pricing-cards";
+import { NotificationDemo } from "@/components/showcase/notification-demo";
+import { FileUpload } from "@/components/showcase/file-upload";
 
-export default function FormsPage() {
+export default function ComponentsPage() {
   return (
     <div className="min-h-screen relative overflow-hidden">
-      {/* Animated gradient background with patterns */}
+      {/* Animated gradient background */}
       <div className="fixed inset-0 -z-10">
         <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 dark:from-slate-900 dark:via-purple-900 dark:to-slate-900" />
 
@@ -28,19 +32,35 @@ export default function FormsPage() {
       <Navbar />
 
       <main className="container mx-auto px-4 py-8 sm:py-12 relative space-y-8">
-        <div>
-          <h1 className="text-4xl font-bold mb-2 text-[var(--text-primary)]">Forms & Analytics</h1>
+        <div className="text-center mb-12">
+          <h1 className="text-4xl font-bold mb-2 text-[var(--text-primary)]">
+            Component Showcase
+          </h1>
           <p className="text-[var(--text-secondary)]">
-            Beautiful glass-styled forms and interactive charts
+            Real-world UI patterns built with the GlassMotion design system
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          <ContactForm />
-          <SettingsForm />
+        {/* Pricing - Full Width Hero */}
+        <PricingCards />
+
+        {/* Two Column: Auth + Team */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <TwoFactorAuth />
+          <TeamInvite />
         </div>
 
-        <AnalyticsChart />
+        {/* Two Column: Payment + File Upload */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <PaymentForm />
+          <FileUpload />
+        </div>
+
+        {/* Loading States - Full Width */}
+        <LoadingShowcase />
+
+        {/* Notifications - Full Width */}
+        <NotificationDemo />
       </main>
 
       <Footer />

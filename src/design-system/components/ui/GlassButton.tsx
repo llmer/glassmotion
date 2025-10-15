@@ -93,7 +93,7 @@ const GlassButton = React.forwardRef<HTMLButtonElement, GlassButtonProps>(
             'hover:shadow-[var(--shadow-high)]',
           ],
       {
-        'hover:transform hover:-translate-y-1': hoverLift,
+        'hover:transform hover:-translate-y-0.5': hoverLift,
         'focus-visible:ring-2 focus-visible:ring-[color-mix(in_srgb,var(--accent)_50%,transparent_50%)] focus-visible:ring-offset-2 focus-visible:ring-offset-transparent': focusGlow,
       },
       className

@@ -40,12 +40,13 @@ export function Features() {
           animateIn
           adaptiveBlur
           lighting
+          className="h-full"
         >
           <CardHeader>
             <CardTitle>{feature.title}</CardTitle>
             <CardDescription>{feature.description}</CardDescription>
           </CardHeader>
-          <CardContent>
+          <CardContent className="flex-1">
             <p className="text-sm text-[var(--text-secondary)]">
               {feature.content}
             </p>

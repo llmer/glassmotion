@@ -6,7 +6,7 @@ export function Footer() {
           Built with Next.js, React, Tailwind CSS, and shadcn/ui
         </p>
         <p className="text-xs text-muted-foreground mt-2">
-          GlassMotion Design System • 2025
+          2025
         </p>
       </div>
     </footer>
