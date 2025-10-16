@@ -2,7 +2,8 @@
 @import "../design-system/styles/glass-motion.css";
 @import "tw-animate-css";
 
-@custom-variant dark (&:is(.dark *));
+/* Dark mode disabled */
+/* @custom-variant dark (&:is(.dark *)); */
 
 :root {
 
@@ -122,20 +123,17 @@
   --radius-xl: calc(var(--radius) + 4px);
 }
 
-@media (prefers-color-scheme: dark) {
+/* Dark mode disabled - using light mode only */
+/* @media (prefers-color-scheme: dark) {
   :root {
-
-    /* Dark mode glass adjustments */
     --glass-opacity: 0.80;
     --glass-tint: rgba(255, 255, 255, 0.10);
     --glass-border: rgba(255, 255, 255, 0.15);
-
-    /* Dark mode text */
     --text-primary: rgba(255, 255, 255, 0.90);
     --text-secondary: rgba(255, 255, 255, 0.63);
     --text-disabled: rgba(255, 255, 255, 0.36);
   }
-}
+} */
 
 /* Reduced transparency mode for accessibility */
 @media (prefers-reduced-transparency: reduce) {
@@ -145,11 +143,12 @@
     --glass-tint: rgba(255, 255, 255, 0.95);
   }
 
-  @media (prefers-color-scheme: dark) {
+  /* Dark mode disabled */
+  /* @media (prefers-color-scheme: dark) {
     :root {
       --glass-tint: rgba(0, 0, 0, 0.95);
     }
-  }
+  } */
 }
 
 /* Reduced motion mode for accessibility */
@@ -180,7 +179,8 @@
   }
 }
 
-.dark {
+/* Dark mode disabled - using light mode only */
+/* .dark {
   --background: oklch(0.145 0 0);
   --foreground: oklch(0.985 0 0);
   --card: oklch(0.205 0 0);
@@ -212,7 +212,7 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
-}
+} */
 
 @layer base {
   * {

@@ -227,10 +227,11 @@
 }
 
 /* ============================
-   Dark Mode Adjustments
+   Dark Mode Adjustments (DISABLED)
    ============================ */
 
-@media (prefers-color-scheme: dark) {
+/* Dark mode disabled - using light mode only */
+/* @media (prefers-color-scheme: dark) {
   .glass-button {
     background: color-mix(in srgb, var(--accent) 20%, var(--glass-tint) 80%);
   }
@@ -238,7 +239,7 @@
   .glass-button:hover {
     background: color-mix(in srgb, var(--accent) 35%, var(--glass-tint) 65%);
   }
-}
+} */
 
 /* ============================
    Text Effects
