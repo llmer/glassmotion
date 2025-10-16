@@ -15,7 +15,6 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "GlassMotion",
   description: "Beautiful Glass UI Design System with layered glass effects, dynamic lighting, and fluid motion.",
-  colorScheme: "light",
   keywords: ["glass design", "ui components", "design system", "shadcn", "tailwind css", "glassmorphism", "translucent ui"],
   authors: [{ name: "GlassMotion" }],
   creator: "GlassMotion",
@@ -54,6 +53,10 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
+};
+
+export const viewport = {
+  colorScheme: "light",
 };
 
 export default function RootLayout({

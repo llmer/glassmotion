@@ -14,10 +14,10 @@ const GlassBadge = React.forwardRef<HTMLDivElement, GlassBadgeProps>(
     const glassClasses = cn(
       // Base glass effects
       'backdrop-blur-[15px]',
-      'bg-white/25 dark:bg-white/15',
+      'bg-white/25',
       'border-0',
       'shadow-[0_2px_8px_0_rgba(31,38,135,0.2)]',
-      'text-gray-900 dark:text-white',
+      'text-gray-900',
       'font-medium',
       className
     )

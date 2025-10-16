@@ -37,7 +37,7 @@ const GlassNavBar = React.forwardRef<HTMLElement, GlassNavBarProps>(
     const navClasses = cn(
       // Glass effects
       'backdrop-blur-[25px]',
-      'bg-white/30 dark:bg-black/30',
+      'bg-white/30',
       'w-full',
       'flex items-center justify-between',
       'px-4 sm:px-6 lg:px-8',
